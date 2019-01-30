@@ -40,7 +40,7 @@ extension Reactive where Base: UIAlertController {
     /// - parameter buttons: Array of alert button descriptions
     /// - parameter textFields: Array of alert text field configuration blocks
     /// - returns: `Observable<(Int, [String])>`, where first value in tuple is index of selected button and second is array of strings, entered in provided textfields (or empty if there are no text fields)
-
+    
     public func show(in vc: UIViewController, buttons: [UIAlertController.AlertButton], textFields: [TextFieldConfiguration?]) -> Single<(Int, [String])> {
         return Single<(Int, [String])>.create(subscribe: { [weak vc] observer in
             guard let vc = vc else {
