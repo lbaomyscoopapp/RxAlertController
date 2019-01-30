@@ -162,6 +162,17 @@ extension Reactive where Base: UIAlertController {
         return alertView.rx.show(in: vc, buttons: buttons, textFields: textFields)
     }
     
+    public static func show(in vc: UIViewController, title: String?, message: String?, buttons: [UIAlertController.AlertButton], textFields: [TextFieldConfiguration?], preferredStyle: UIAlertControllerStyle = .alert, attributeTitle: NSMutableAttributedString?) -> Single<(Int, [String])> {
+        
+        var alertView = UIAlertController(title: title, message: message, preferredStyle: preferredStyle)
+        if title != nil , attributeTitle != nil {
+            alertView.setValue(attributeTitle, forKey: "attributedTitle")
+        }
+        
+        return alertView.rx.show(in: vc, buttons: buttons, textFields: textFields)
+    }
+    
+    
     /// Creates and displays UIAlertController to the user.
     ///
     /// - parameter in: View Controller presenting alert
